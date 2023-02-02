@@ -1,0 +1,51 @@
+.body {
+  background: url("https://bevelmedia.com.br/assets/banner-bg.webp");
+
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  h1 {
+    color: white;
+    font-weight: bold;
+  }
+
+  img {
+    display: block;
+    width: 360px;
+    margin-bottom: 50px;
+  }
+
+  p {
+    color: white;
+    font-size: 20px;
+    margin-top: 20px;
+    font-weight: 500;
+  }
+
+  a {
+    gap: 10px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    text-decoration: none;
+    cursor: pointer;
+    background-color: white;
+    color: black;
+    font-size: 16px;
+    border: 1px solid white;
+    padding: 15px 27px;
+    border-radius: 12px;
+    font-weight: 600;
+    max-width: -webkit-max-content;
+    max-width: -moz-max-content;
+    max-width: max-content;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+  }
+}
