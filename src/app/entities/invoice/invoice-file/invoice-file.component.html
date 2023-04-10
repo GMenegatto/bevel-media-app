@@ -1,0 +1,120 @@
+
+<div class="modal-header">
+  <h4>Recibo</h4>
+  <button (click)="close()" aria-hidden="true" class="close" data-dismiss="modal" type="button">&times;
+  </button>
+</div>
+
+<div class="component-header">
+  <div class="icon-title">
+    <div class="icon-label">
+      <fa-icon icon="file-invoice"></fa-icon>
+    </div>
+    <h2>Recibo gerado</h2>
+  </div>
+
+  <p>O arquivo foi gerado, clique em umas das opções para baixa-lo.</p>
+
+  <div class="row mb-4">
+    <button [disabled]="isLoading" type="button" (click)="generatePdf()" class="col-3 btn btn-danger mt-3">
+      <ng-container *ngIf="!isLoading">
+      <fa-icon icon="file-pdf"></fa-icon>
+      &nbsp;
+      Baixar PDF
+      </ng-container>
+    <ng-container *ngIf="isLoading">
+      <fa-icon [spin]="true" icon="spinner"></fa-icon>
+    </ng-container>
+    </button>
+  </div>
+
+</div>
+
+
+  <div *ngIf="outerEntity" id="content" #content class="invoice">
+    <img class="b" src="assets/images/b.png">
+    <h1 class="invoice-container" >{{'invoice.thisIsYourInvoice' | translate: {name: outerEntity.customer} }}</h1>
+
+    <div class="header-info invoice-container">
+      <div class="col-6">
+        <div class="info">
+          <h2 >{{'invoice.invoiceNumber' | translate}}</h2>
+          <p>{{outerEntity.invoiceNumber}}</p>
+        </div>
+        <div class="info">
+          <h2>{{'invoice.date' | translate}}</h2>
+          <p>{{outerEntity.date }}</p>
+        </div>
+        <div class="info">
+          <h2>{{'invoice.name' | translate}}</h2>
+          <p>{{outerEntity.customer}}</p>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="info">
+          <h2>{{'invoice.address' | translate}}</h2>
+          <p>{{outerEntity.address}}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="purple-header">
+      <div class="invoice-container row">
+        <div class="col-2"><div class="arrow-down"></div></div>
+        <div class="col-4"><h2>{{'invoice.description' | translate}}</h2></div>
+        <div class="col-2 text-center"><h2>{{'invoice.price' | translate}}</h2></div>
+        <div class="col-2 text-center"><h2>{{'invoice.amount' | translate}}</h2></div>
+        <div class="col-2 text-center"><h2>{{'invoice.total' | translate}}</h2></div>
+      </div>
+    </div>
+    <div class="invoice-container">
+      <div *ngFor="let item of items; index as i" class="invoice-container row">
+        <div class="col-2 text-center"><p>{{i + 1}}</p></div>
+        <div class="col-4"><p>{{item.description}}</p></div>
+        <div class="col-2 text-center"><p>{{item.price | currency: invoice.currency}}</p></div>
+        <div class="col-2 text-center"><p>{{item.amount}}</p></div>
+        <div class="col-2 text-center"><p *ngIf="item.price && item.amount">{{(item.price || 0) * (item.amount || 0) | currency: invoice.currency}}</p></div>
+      </div>
+      <div *ngFor="let item of discounts; index as i" class="invoice-container discount row">
+        <div class="col-2 text-center"><p>-</p></div>
+        <div class="col-4"><p>{{item.description}}</p></div>
+        <div class="col-2 text-center"><p>{{item.price | currency: invoice.currency}}</p></div>
+        <div class="col-2 text-center"><p>{{item.amount}}</p></div>
+        <div class="col-2 text-center"><p *ngIf="item.price && item.amount">{{(item.price || 0) * (item.amount || 0) | currency: invoice.currency}}</p></div>
+      </div>
+
+
+
+    </div>
+
+    <div class="invoice-container purple-header text-center">
+      <h2>TOTAL: {{fullPrice | currency: invoice.currency}}</h2>
+    </div>
+
+    <div class="header-info bottom-info justify-content-between invoice-container">
+      <div class="col-5">
+        <div class="info flex-column mb-5">
+          <h2>{{'invoice.paymentMethod' | translate}}</h2>
+          <p>{{outerEntity.paymentMethod}}</p>
+          <p>{{outerEntity.paymentObs}}</p>
+        </div>
+        <div class="info flex-column mb-5">
+          <h2>{{'invoice.recipient' | translate}}</h2>
+          <p>{{outerEntity.destination}}</p>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="info flex-column mb-5 ">
+          <h2>{{'invoice.paymentDate' | translate}}</h2>
+          <p>{{outerEntity.paymentDate}}</p>
+        </div>
+        <div class="info flex-column mb-5">
+          <h2>{{'invoice.installment' | translate}}</h2>
+          <p>{{outerEntity.installment}}</p>
+        </div>
+      </div>
+    </div>
+
+    <footer><p>www.bevelmedia.com.br</p></footer>
+  </div>
+

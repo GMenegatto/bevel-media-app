@@ -1,0 +1,86 @@
+<div class="container pb-5">
+  <div class="col-12">
+    <div class="component-header">
+      <div class="icon-title">
+        <div class="icon-label">
+          <fa-icon icon="file-invoice"></fa-icon>
+        </div>
+        <h2>Calendário de conteúdo</h2>
+      </div>
+
+      <p>Preencha as informações do formulário abaixo para agendar o conteúdo.</p>
+
+    </div>
+    <form #calendarForm="ngForm" name="editForm" role="form" (ngSubmit)="openCalendar()" novalidate [formGroup]="editForm"
+          class="mt-2">
+      <div class="table-button-container col-12">
+
+        <div class="table-header col-12">
+          <h2>Conteúdos</h2>
+          <button type="button" (click)="addItem()" class="btn btn-primary ">Adicionar conteúdo</button>
+
+        </div>
+
+        <table class="table table-striped mt-4 mb-3">
+          <thead>
+          <tr>
+            <th scope="col">Data</th>
+            <th scope="col">Pilar</th>
+            <th scope="col">Conteúdo</th>
+            <th scope="col">Formato</th>
+            <th scope="col">Ads</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let item of calendars; index as i">
+            <th>{{item.date}}</th>
+            <td>{{ item.pilar }}</td>
+            <td>{{ item.content }}</td>
+            <td>{{ item.format }}</td>
+            <td *ngIf="item.ads">Sim</td>
+            <td *ngIf="!item.ads">Não</td>
+            <td><a (click)="edit(item)">Editar</a></td>
+            <td><a (click)="delete(item)">Excluir</a></td>
+          </tr>
+
+          </tbody>
+        </table>
+
+        <div *ngIf="true" class="">
+          <div class="alert alert-warning" role="alert">
+            Ainda não foram adicionados conteúdos.
+          </div>
+        </div>
+
+      </div>
+      <button type="submit" class="btn btn-primary ml-4">Gerar calendário</button>
+    </form>
+  </div>
+
+</div>
+
+<div id="content" #content class="calendar">
+  <div class="header">
+    <div class="calendar-container row">
+      <div class="col-1"><h2>Data</h2></div>
+      <div class="col-2 text-center"><h2>Pilar</h2></div>
+      <div class="col-2 text-center"><h2>Tipo</h2></div>
+      <div class="col-2 text-center"><h2>Plataforma</h2></div>
+      <div class="col-4 text-center"><h2>Conteúdo</h2></div>
+      <div class="col-1 text-center"><h2>Ads</h2></div>
+    </div>
+  </div>
+  <div *ngFor="let item of calendars" class="calendar-container items-container">
+    <div class="calendar-container items row">
+      <div class="col-1"><p>{{item.date}}</p></div>
+      <div class="col-2 text-center"><p>{{item.pilar}}</p></div>
+      <div class="col-2 text-center"><p>{{item.format}}</p></div>
+      <div class="col-2 text-center"><p>{{item.platform}}</p></div>
+      <div class="col-4 text-center"><p>{{item.content}}</p></div>
+      <div class="col-1 text-center"><p class="check" [ngClass]="item.ads ? 'active' : ''"><fa-icon *ngIf="item.ads" icon="check"></fa-icon></p></div>
+    </div>
+
+  </div>
+</div>

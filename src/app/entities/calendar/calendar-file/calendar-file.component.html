@@ -1,0 +1,37 @@
+
+<div class="modal-header">
+  <h4>Recibo</h4>
+  <button (click)="close()" aria-hidden="true" class="close" data-dismiss="modal" type="button">&times;
+  </button>
+</div>
+
+<div class="component-header">
+  <div class="icon-title">
+    <div class="icon-label">
+      <fa-icon icon="file-invoice"></fa-icon>
+    </div>
+    <h2>Recibo gerado</h2>
+  </div>
+
+  <p>O arquivo foi gerado, clique em umas das opções para baixa-lo.</p>
+
+  <div class="row mb-4">
+    <button [disabled]="isLoading" type="button" (click)="generatePdf()" class="col-3 btn btn-danger mt-3">
+      <ng-container *ngIf="!isLoading">
+      <fa-icon icon="file-pdf"></fa-icon>
+      &nbsp;
+      Baixar PDF
+      </ng-container>
+    <ng-container *ngIf="isLoading">
+      <fa-icon [spin]="true" icon="spinner"></fa-icon>
+    </ng-container>
+    </button>
+  </div>
+
+</div>
+
+
+  <div *ngIf="outerEntity" id="content" #content class="calendar">
+
+  </div>
+

@@ -1,11 +1,27 @@
-<div class="mobile-navbar-background"></div>
-<h2>asdsadsadsad</h2>
-<aside class="menu-sidebar d-lg-block">
-  <div class="menu-sidebar-items">
+<aside class="menu-sidebar">
+  <img class="logo" src="assets/logo/logo.svg">
+
+  <div class="menu-sidebar-items mt-5">
     <nav class="navbar-sidebar" >
-      <ul class="navbar-list ml-auto">
-        <li *ngIf="false" class="pointer">
+      <ul class="">
+
+        <li >
+          <a class="highlighted-menu" routerLinkActive="active" routerLink="invoice">
+            <fa-icon icon="file-invoice"></fa-icon>
+            <span>Recibo</span>
+          </a>
         </li>
+
+        <li >
+          <a class="highlighted-menu" routerLinkActive="active" routerLink="calendar">
+            <fa-icon icon="calendar"></fa-icon>
+            <span>Agendamento de post</span>
+          </a>
+        </li>
+
+
+
+
       </ul>
     </nav>
   </div>

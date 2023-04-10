@@ -1,0 +1,73 @@
+<div class="modal-header">
+  <h4>Recibo</h4>
+  <button (click)="close()" aria-hidden="true" class="close" data-dismiss="modal" type="button">&times;
+  </button>
+</div>
+
+<div class="component-header">
+  <div class="icon-title">
+    <div class="icon-label">
+      <fa-icon icon="file-invoice"></fa-icon>
+    </div>
+    <h2>Cadastrar item</h2>
+  </div>
+</div>
+
+
+<form #calendarForm="ngForm" name="editForm" role="form" novalidate (ngSubmit)="addItem()" [formGroup]="editForm"
+      class="mt-2">
+  <div class="row modal-body py-5">
+    <div class="form-group col-6">
+      <label for="date">Data</label>
+      <input formControlName="date" type="text" class="form-control" id="date">
+    </div>
+    <div class="form-group col-6">
+      <label for="pilar">Pilar</label>
+      <input formControlName="pilar" type="text" class="form-control" id="pilar">
+    </div>
+    <div class="form-group col-6">
+      <label for="content">Conteúdo</label>
+      <input formControlName="content" type="text" class="form-control" id="content">
+    </div>
+    <div class="form-group col-6">
+      <label for="content">Plataforma</label>
+      <!--      <input formControlName="platform" type="text" class="form-control" id="platform">-->
+    </div>
+
+    <ng-select
+      [items]="platforms"
+      [multiple]="true"
+      bindLabel="platform"
+      formControlName="platform">
+
+      <ng-template ng-label-tmp let-item="item" let-clear="clear">
+        <span class="ng-value-label">      <fa-icon [icon]="['fab', getIcon(item)]"></fa-icon>
+          {{item}}</span>
+        <!--        <span class="ng-value-icon right" (click)="clear(item)" aria-hidden="true">×</span>-->
+      </ng-template>
+
+      <ng-template ng-option-tmp let-item="item">
+
+        <span><fa-icon [icon]="['fab', getIcon(item)]"></fa-icon> &nbsp;{{item}}</span>
+      </ng-template>
+    </ng-select>
+
+    <div class="form-group col-6">
+      <label for="format">Formato</label>
+      <input formControlName="format" type="text" class="form-control" id="format">
+    </div>
+    <div class="form-group col-6">
+      <label for="ads">Ads</label>
+      <input formControlName="ads" type="checkbox" class="form-check-input" id="ads">
+    </div>
+  </div>
+
+
+  <div class="modal-footer">
+    <button type="submit" class="btn btn-primary">Adicionar</button>
+
+  </div>
+</form>
+
+
+

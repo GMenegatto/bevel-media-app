@@ -1,0 +1,17 @@
+{
+  "invoice": {
+    "thisIsYourInvoice": "{{ name }}, \nthis is your invoice!",
+    "invoiceNumber": "Invoice no:",
+    "date": "Date:",
+    "name": "Name:",
+    "address": "Address:",
+    "description": "Description",
+    "price": "Price",
+    "amount": "Amount",
+    "total": "Total",
+    "paymentMethod": "Payment method",
+    "paymentDate": "Payment date",
+    "recipient": "Recipient",
+    "installment": "Installment"
+  }
+}

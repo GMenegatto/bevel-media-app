@@ -1,0 +1,17 @@
+{
+  "invoice": {
+    "thisIsYourInvoice": "{{ name }}, esse é seu recibo!",
+    "invoiceNumber": "Fatura no:",
+    "date": "Data:",
+    "name": "Nome:",
+    "address": "Endereço:",
+    "description": "Descrição",
+    "price": "Preço",
+    "amount": "Qtd.",
+    "total": "Total",
+    "paymentMethod": "Método de pagamento",
+    "paymentDate": "Data de pagamento",
+    "recipient": "Destinatário",
+    "installment": "Parcela"
+  }
+}

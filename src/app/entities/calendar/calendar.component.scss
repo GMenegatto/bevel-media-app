@@ -1,0 +1,147 @@
+.calendar {
+  font-family: 'Montserrat';
+  height: 1200px;
+  width: 1700px;
+  border: 1px solid black;
+  padding-top: 140px;
+
+  h2,p {
+    margin: 0;
+  }
+
+  h1 {
+    text-transform: uppercase;
+    font-size: 32px;
+    font-weight: bold;
+  }
+
+  .header-info {
+    padding-top: 40px;
+    display: flex;
+
+
+
+
+    .info {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 10px;
+
+      h2 {
+        font-size: 22px;
+        font-weight: bold;
+        color: #252525;
+        text-transform: uppercase;
+        margin: 0;
+        align-self: flex-start;
+        margin-top: 3px;
+      }
+
+      p {
+        margin: 0;
+        font-size: 22px;
+        color: #252525;
+        align-self: flex-start;
+
+      }
+    }
+  }
+  .items-container {
+    margin-top: 20px !important;
+    display: block;
+  }
+  .calendar-container {
+    max-width: 1600px;
+    margin: 0 auto;
+
+
+
+    h2 {
+      font-size: 24px;
+      text-align: center;
+      font-weight: bold;
+      color: black;
+      text-transform: uppercase;
+    }
+
+    .items {
+      div {
+        p {
+          background: #eeeeee;
+          border-radius: 10px;
+          padding: 24px 15px;
+          text-align: center;
+          height: 78px;
+
+          font-size: 18px;
+        }
+
+        .check {
+          width: 50px;
+          height: 50px;
+          margin: 0 auto;
+          background: white;
+          border: 3px solid #c5c5c5;
+          margin-top: 13px;
+
+          fa-icon {
+            margin-top: 3px;
+          }
+
+          &.active {
+background: #6300a8;
+            border-color: #3c0065;
+            align-items: center;
+            display: flex;
+            color: white;
+            font-size: 29px;
+            justify-content: center;
+          }
+        }
+      }
+
+    }
+
+    .row {
+      padding: 10px 0;
+    }
+
+    p {
+      font-size: 20px;
+      color: #252525;
+      font-weight: 500;
+    }
+  }
+  .purple-header {
+    background: #6300a8;
+    margin: 60px auto;
+
+    color: white;
+    padding: 20px 0;
+
+    h2 {
+      font-size: 20px;
+      font-weight: 500;
+      text-transform: uppercase;
+      margin: 0;
+    }
+  }
+
+  .bottom-info {
+    .info {
+      height: 120px;
+    }
+  }
+
+footer {
+  p {
+    text-align: center;
+
+    font-weight: 500;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    color: #909090;
+  }
+}
+
+}

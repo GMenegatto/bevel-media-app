@@ -1,0 +1,43 @@
+<div class="modal-header">
+  <h4>Recibo</h4>
+  <button (click)="close()" aria-hidden="true" class="close" data-dismiss="modal" type="button">&times;
+  </button>
+</div>
+
+<div class="component-header">
+  <div class="icon-title">
+    <div class="icon-label">
+      <fa-icon icon="file-invoice"></fa-icon>
+    </div>
+    <h2 *ngIf="itemType === 'ITEM'">Cadastrar item</h2>
+    <h2 *ngIf="itemType === 'DISCOUNT'">Cadastrar desconto</h2>
+  </div>
+</div>
+
+
+<form #invoiceForm="ngForm" name="editForm" role="form" novalidate (ngSubmit)="addItem()" [formGroup]="editForm"
+      class="mt-2">
+  <div class="row modal-body py-5">
+    <div class="form-group col-6">
+      <label for="description"> Descrição</label>
+      <input formControlName="description" type="text" class="form-control" id="description">
+    </div>
+    <div class="form-group col-6">
+      <label for="amount">Quantidade</label>
+      <input formControlName="amount" type="number" class="form-control" id="amount">
+    </div>
+    <div class="form-group col-6">
+      <label for="price">Preço</label>
+      <input currencyMask formControlName="price" [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" type="text" class="form-control" id="price">
+    </div>
+  </div>
+
+
+  <div class="modal-footer">
+    <button type="submit" class="btn btn-primary">Adicionar</button>
+
+  </div>
+</form>
+
+
+

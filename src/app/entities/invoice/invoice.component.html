@@ -1,0 +1,113 @@
+<div class="container pb-5">
+  <div class="col-12">
+    <div class="component-header">
+      <div class="icon-title">
+        <div class="icon-label">
+          <fa-icon icon="file-invoice"></fa-icon>
+        </div>
+        <h2>Gerar recibo</h2>
+      </div>
+
+      <p>Preencha as informações do formulário abaixo para gerar o recibo do cliente.</p>
+
+    </div>
+    <form #invoiceForm="ngForm" name="editForm" role="form" (ngSubmit)="openInvoice()" novalidate [formGroup]="editForm"
+          class="mt-2">
+      <div class="row">
+        <div class="form-group col-6">
+          <label for="customer">Cliente</label>
+          <input formControlName="customer" type="text" class="form-control" id="customer">
+        </div>
+        <div class="form-group col-3">
+          <label for="invoiceNumber">Número fatura</label>
+          <input formControlName="invoiceNumber" type="text" class="form-control" id="invoiceNumber">
+        </div>
+        <div class="form-group col-3">
+          <label for="date">Data</label>
+          <input formControlName="date" type="text" class="form-control" id="date">
+        </div>
+        <div class="form-group col-12">
+          <label for="address">Endereço</label>
+          <input formControlName="address"
+                 type="text" class="form-control" id="address">
+        </div>
+        <div class="form-group col-12">
+          <label for="destination">Destinatário</label>
+          <input formControlName="destination" type="text" class="form-control" id="destination">
+        </div>
+        <div class="form-group col-6">
+          <label for="installment">Parcela</label>
+          <input formControlName="installment" type="text" class="form-control" id="installment">
+        </div>
+        <div class="form-group col-3">
+          <label for="paymentDate">Data de pagamento</label>
+          <input formControlName="paymentDate" type="text" class="form-control" id="paymentDate">
+        </div>
+        <div class="form-group col-3">
+          <label for="paymentMethod">Método de pagamento</label>
+          <input formControlName="paymentMethod" type="text" class="form-control" id="paymentMethod">
+        </div>
+        <div class="form-group col-3">
+          <label for="paymentObs">Obs de pagamento</label>
+          <input formControlName="paymentObs" type="text" class="form-control" id="paymentObs">
+        </div>
+        <div class="form-group col-3">
+          <label for="paymentObs">Moeda</label>
+          <select formControlName="currency"  class="form-control" id="currency">
+            <option selected value="BRL">BRL</option>
+            <option>USD</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="table-button-container">
+
+        <div class="table-header">
+          <h2>Itens</h2>
+          <div class="buttons">
+          <button type="button" (click)="addDiscount()" class="btn btn-secondary ">Adicionar desconto</button>
+          <button type="button" (click)="addItem()" class="btn btn-primary ">Adicionar item</button>
+          </div>
+
+        </div>
+
+        <table class="table table-striped mt-4 mb-3">
+          <thead>
+          <tr>
+            <th scope="col">Índice</th>
+            <th scope="col">Descrição</th>
+            <th scope="col">Preço</th>
+            <th scope="col">Quantidade</th>
+            <th scope="col">Tipo</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let item of invoice.items; index as i">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>{{ item.description }}</td>
+            <td>{{ item.price }}</td>
+            <td>{{ item.amount }}</td>
+            <td *ngIf="item.type === 'ITEM'">Item</td>
+            <td *ngIf="item.type === 'DISCOUNT'">Desconto</td>
+            <td><a (click)="edit(item)">Editar</a></td>
+            <td><a (click)="delete(item)">Excluir</a></td>
+          </tr>
+
+          </tbody>
+        </table>
+
+        <div *ngIf="!invoice?.items?.length" class="">
+          <div class="alert alert-warning" role="alert">
+            Ainda não foram adicionados itens.
+          </div>
+        </div>
+
+      </div>
+      <button type="submit" class="btn btn-primary ml-4">Gerar recibo</button>
+    </form>
+  </div>
+
+</div>
+

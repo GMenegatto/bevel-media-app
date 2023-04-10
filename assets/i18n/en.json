@@ -1,0 +1,5 @@
+{
+  "invoice": {
+    "thisIsYourInvoice": "{{ name }},<br> this is your invoice!"
+  }
+}

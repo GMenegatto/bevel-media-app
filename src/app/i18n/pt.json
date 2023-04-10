@@ -1,0 +1,6 @@
+{
+  "invoice": {
+    "thisIsYourInvoice": "{{ name }},<br> esse é seu recibo!",
+    "DESCRIPTION": "This is a sample application."
+  }
+}

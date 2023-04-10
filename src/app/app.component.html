@@ -1,8 +1,15 @@
-<section class="body">
-  <img src="assets/logo/logo-bco.svg">
+<!--<section class="body">-->
+<!--  <img src="assets/logo/logo-bco.svg">-->
 
-  <h1>Bem vindo ao Bevel Media App</h1>
-  <p>Estamos construindo algo incrível e logo teremos novidades da nossa nova plataforma ;)</p>
+<!--  <h1>Bem vindo ao Bevel Media App</h1>-->
+<!--  <p>Estamos construindo algo incrível e logo teremos novidades da nossa nova plataforma ;)</p>-->
 
-  <a href="https://bevelmedia.com.br">Acesse nosso site</a>
+<!--  <a href="https://bevelmedia.com.br">Acesse nosso site</a>-->
+
+<!--</section>-->
+<section class="d-flex">
+  <router-outlet name="sidebar"></router-outlet>
+  <div class="component-container">
+    <router-outlet></router-outlet>
+  </div>
 </section>

@@ -1,0 +1,42 @@
+aside {
+  height: 100vh;
+  position: fixed;
+  width: 300px;
+  background: white;
+  border-right: 1px solid #e1e1e1;
+  padding: 20px 15px;
+
+  .logo {
+    width: 100px;
+  }
+}
+
+li a {
+  text-decoration: none;
+  color: #252525;
+  background: white;
+  display: flex;
+  font-size: 14px;
+  gap: 15px;
+  font-weight: 500;
+  padding: 13px 20px;
+  border-radius: 4px;
+  transition: 0.1s ease-in-out;
+
+
+  &:hover {
+    background: #e5e5e5;
+  }
+
+  &.active {
+    background: #f1deff;
+    color: #3c0066;
+
+
+  }
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
