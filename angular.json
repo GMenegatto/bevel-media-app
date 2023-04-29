@@ -98,6 +98,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "bevel-media-app:build:production",
+            "firebaseProject": "bevel-media",
+            "firebaseHostingSite": "bevel-media"
+          }
         }
       }
     }

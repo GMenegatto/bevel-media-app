@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "bevel-media": {
+      "hosting": {
+        "bevel-media-app": [
+          "bevel-media"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "bevel-media"
+  }
+}
