@@ -93,14 +93,15 @@
 
     <div class="header-info bottom-info justify-content-between invoice-container">
       <div class="col-5">
-        <div class="info flex-column mb-5">
-          <h2>{{'invoice.paymentMethod' | translate}}</h2>
-          <p>{{outerEntity.paymentMethod}}</p>
-          <p>{{outerEntity.paymentObs}}</p>
-        </div>
+
         <div class="info flex-column mb-5">
           <h2>{{'invoice.recipient' | translate}}</h2>
           <p>{{outerEntity.destination}}</p>
+        </div>
+        <div class="info flex-column mb-5">
+          <h2>{{'invoice.paymentMethod' | translate}}</h2>
+          <p>{{outerEntity.paymentMethod}}</p>
+          <p class="px18">{{outerEntity.paymentObs}}</p>
         </div>
       </div>
       <div class="col-4">

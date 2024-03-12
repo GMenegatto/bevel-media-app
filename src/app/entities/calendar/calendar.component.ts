@@ -5,7 +5,9 @@ import {FormBuilder, NgForm, Validators} from '@angular/forms';
 import {CalendarFileService} from "./calendar-file/calendar-file.service";
 import {Calendar} from "../model/calendar.model";
 import {CalendarItemService} from "./calendar-item/calendar-item.service";
-import {InvoiceItem} from "../model/invoice-item.model";
+import getIconFromPlatform, {getIconFamily, Platform} from "../enum/platform.enum";
+import {IconName} from "@fortawesome/fontawesome-svg-core";
+import {IconPrefix} from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: 'app-calendar',
@@ -18,18 +20,11 @@ export class CalendarComponent {
   @ViewChild('asd', {static: false}) el2!: ElementRef
 
   editForm = this.fb.group({
-    customer: ['', [Validators.required, Validators.maxLength(100)]],
-    calendarNumber: ['', [Validators.required, Validators.maxLength(100)]],
     date: [''],
-    paymentDate: [''],
-    address: [''],
-    destination: [''],
-    paymentObs: [''],
-    paymentMethod: [''],
-    installment: ['']
+    customer: ['']
   });
 
-  calendars!: Calendar[];
+  calendars: Calendar[] = [];
 
   @ViewChild('calendarForm')
   form?: NgForm;
@@ -45,46 +40,22 @@ export class CalendarComponent {
     this.calendars = []
   }
 
-  teste2() {
-    html2canvas(this.el.nativeElement).then(function (canvas) {
-      canvas.id = "asd"
-      document.body.appendChild(canvas);
-    });
-  }
-
-  teste3() {
-    html2canvas(this.el.nativeElement, {scale: 1.2}).then(function (canvas) {
-      const imgData = canvas.toDataURL(
-        'image/png');
-      const doc = new jsPDF('p', 'px', [1200, 1700]);
-      doc.addImage(imgData, 'PNG', 0, 0, 1200, 1700);
-      doc.save('recibo.pdf');
-    });
-  }
-
-  teste() {
-    const doc = new jsPDF('p', 'px', [1200, 1700]);
-    doc.html(this.el.nativeElement, {
-      width: 1200,
-      callback: (pdf) => {
-        pdf.save("teste.pdf")
-      }
-    })
-  }
-
   openCalendar() {
-    this.calendarFileService.open(this.calendars)
+    const customer = this.editForm.get(['customer'])!.value
+    const date = this.editForm.get(['date'])!.value
+    this.calendarFileService.open(this.calendars, customer, date)
   }
 
   addItem() {
     this.calendarItemService.open(undefined, (calendar: Calendar) => {
-      this.calendars.push(calendar);
+        calendar.id = (this.calendars?.length + 1)
+        this.calendars.push(calendar);
     })
   }
 
   edit(item: Calendar) {
 
-    const oldItem = this.calendars!.find(cd => cd.content === item.content);
+    const oldItem = this.calendars!.find(cd => cd.id === item.id);
 
     this.calendarItemService.open(item, (newItem: Calendar) => {
       this.calendars![this.calendars!.indexOf(oldItem || new Calendar())] = {
@@ -95,11 +66,18 @@ export class CalendarComponent {
 
   delete(item: Calendar) {
 
-    const oldItem = this.calendars!.find(cd => cd.content === item.content) || new Calendar();
+    const oldItem = this.calendars!.find(cd => cd.id === item.id) || new Calendar();
 
-    this.calendars = this.calendars!.filter(cd => cd.content !== oldItem.content);
+    this.calendars = this.calendars!.filter(cd => cd.id !== oldItem.id);
 
   }
 
+  getIcon(platform: Platform): IconName {
+    return (getIconFromPlatform(platform) as unknown as IconName);
+  }
+
+  getIconFamily(platform: Platform): IconPrefix {
+    return (getIconFamily(platform) as unknown as IconPrefix);
+  }
 
 }

@@ -15,9 +15,11 @@ export class CalendarFileService {
   ) {
   }
 
-  open(calendars: Calendar[]) {
+  open(calendars: Calendar[], customer: string, date: string) {
     const modalRef = this.modalService.open(CalendarFileComponent)
     modalRef.componentInstance.calendars = calendars
+    modalRef.componentInstance.customer = customer
+    modalRef.componentInstance.date = date
   }
 
   close(): void {

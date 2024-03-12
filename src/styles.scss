@@ -10,8 +10,29 @@ $theme-colors: (
   "danger": #ff4136
 );
 
+.ng-value-container {
+  .ng-value {
+    white-space: normal !important;
+  }
+}
+
+.modal-content {
+  max-width: 1200px;
+  width: 1200px;
+}
+.ng-select.ng-select-single .ng-select-container {
+  height: 46px;
+}
 * {
   font-family: 'Montserrat';
+}
+
+.ng-select .ng-select-container {
+  height: 46px;
+}
+
+.ng-select.ng-select-single .ng-select-container .ng-value-container .ng-input {
+  top: 10px;
 }
 
 label {

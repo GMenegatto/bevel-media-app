@@ -3,8 +3,9 @@ import {FormBuilder, NgForm} from '@angular/forms';
 import {CalendarItemService} from "./calendar-item.service";
 import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
 import {Calendar} from "../../model/calendar.model";
-import getIconFromPlatform, {Platform} from "../../enum/platform.enum";
+import getIconFromPlatform, {allPlatforms, getIconFamily, Platform} from "../../enum/platform.enum";
 import {Icon, IconName} from "@fortawesome/fontawesome-svg-core";
+import {IconPrefix} from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: 'app-calendar-item',
@@ -16,7 +17,10 @@ export class CalendarItemComponent {
   @ViewChild('content', {static: false}) el!: ElementRef
   @ViewChild('asd', {static: false}) el2!: ElementRef
 
-  platforms: Platform[] = [Platform.YOUTUBE, Platform.FACEBOOK, Platform.INSTAGRAM]
+  platforms: Platform[] = allPlatforms()
+
+  formats: string[] = ['Feed', 'Reel', 'Story', 'Vídeo', 'Post blog', 'Carrossel', 'Imagem']
+  pilars: string[] = ['Institucional', 'Educacional', 'Promocional', 'Prova Social', 'Conexão', 'Inspiração', 'Entretenimento', 'Portfólio']
 
   editForm = this.fb.group({
     date: [''],
@@ -44,7 +48,15 @@ export class CalendarItemComponent {
   }
 
   ngOnInit() {
-
+    if (this.calendar) {
+      this.editForm.get(['date'])?.setValue(this.calendar.date)
+      this.editForm.get(['pilar'])?.setValue(this.calendar.pilar)
+      this.editForm.get(['content'])?.setValue(this.calendar.content)
+      this.editForm.get(['platform'])?.setValue(this.calendar.platform)
+      this.editForm.get(['pilar'])?.setValue(this.calendar.pilar)
+      this.editForm.get(['format'])?.setValue(this.calendar.format)
+      this.editForm.get(['ads'])?.setValue(this.calendar.ads)
+    }
   }
 
   close() {
@@ -68,6 +80,10 @@ export class CalendarItemComponent {
 
   getIcon(platform: Platform): IconName {
     return (getIconFromPlatform(platform) as unknown as IconName);
+  }
+
+  getIconFamily(platform: Platform): IconPrefix {
+    return (getIconFamily(platform) as unknown as IconPrefix);
   }
 
   onConfirmClicked(): void {

@@ -1,7 +1,14 @@
 export enum Platform {
   INSTAGRAM = 'Instagram',
   FACEBOOK = 'Facebook',
-  YOUTUBE = 'Youtube'
+  TIKTOK = 'Tiktok',
+  WHATSAPP = 'WhatsApp',
+  PINTEREST = 'Pinterest',
+  LINKEDIN = 'Linkedin',
+  GOOGLE = 'Google',
+  YOUTUBE = 'Youtube',
+  EMAIL = 'Email',
+  BLOG = 'Blogger'
 }
 
 export default function getIconFromPlatform(value: Platform): string  {
@@ -14,6 +21,38 @@ export default function getIconFromPlatform(value: Platform): string  {
   if (value === Platform.YOUTUBE) {
     return 'youtube'
   }
+  if (value === Platform.TIKTOK) {
+    return 'tiktok'
+  }
+  if (value === Platform.LINKEDIN) {
+    return 'linkedin'
+  }
+  if (value === Platform.PINTEREST) {
+    return 'pinterest'
+  }
+  if (value === Platform.WHATSAPP) {
+    return 'whatsapp'
+  }
+  if (value === Platform.GOOGLE) {
+    return 'google'
+  }
+  if (value === Platform.BLOG) {
+    return 'blogger'
+  }
+  if (value === Platform.EMAIL) {
+    return 'envelope'
+  }
 
   return '';
 }
+
+export function getIconFamily(value: Platform): string  {
+
+  if (value === Platform.EMAIL) {
+    return 'fas'
+  }
+
+  return 'fab';
+}
+
+export const allPlatforms = () => Object.values(Platform);

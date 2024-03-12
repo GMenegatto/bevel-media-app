@@ -1,4 +1,3 @@
-
 <div class="modal-header">
   <h4>Recibo</h4>
   <button (click)="close()" aria-hidden="true" class="close" data-dismiss="modal" type="button">&times;
@@ -10,28 +9,65 @@
     <div class="icon-label">
       <fa-icon icon="file-invoice"></fa-icon>
     </div>
-    <h2>Recibo gerado</h2>
+    <h2>Agendamento gerado</h2>
   </div>
 
-  <p>O arquivo foi gerado, clique em umas das opções para baixa-lo.</p>
+  <p>O arquivo do calendário foi gerado, clique no botão abaixo para baixa-lo.</p>
 
   <div class="row mb-4">
-    <button [disabled]="isLoading" type="button" (click)="generatePdf()" class="col-3 btn btn-danger mt-3">
+    <button [disabled]="isLoading" type="button" (click)="onGeneratePdf()" class="col-6 btn btn-danger mt-3">
       <ng-container *ngIf="!isLoading">
-      <fa-icon icon="file-pdf"></fa-icon>
-      &nbsp;
-      Baixar PDF
+        <fa-icon icon="file-pdf"></fa-icon>
+        &nbsp;
+        Baixar PDF
       </ng-container>
-    <ng-container *ngIf="isLoading">
-      <fa-icon [spin]="true" icon="spinner"></fa-icon>
-    </ng-container>
+      <ng-container *ngIf="isLoading">
+        <fa-icon [spin]="true" icon="spinner"></fa-icon>
+      </ng-container>
     </button>
   </div>
 
 </div>
 
+<div class="file-container">
 
-  <div *ngIf="outerEntity" id="content" #content class="calendar">
+  <div id="capa" #capa class="capa">
+    <h2>CALENDÁRIO DE CONTEÚDO</h2>
+    <p>{{date}}</p>
+    <span>{{customer}}</span>
+  </div>
+  <div *ngFor="let container of calendarsList; index as i">
+    <div  #content1 class="calendar">
+      <div class="header">
+        <div class="calendar-container row">
+          <div class="col-1"><h2>Data</h2></div>
+          <div class="col-2 text-center"><h2>Pilar</h2></div>
+          <div class="col-2 text-center"><h2>Tipo</h2></div>
+          <div class="col-2 text-center"><h2>Plataforma</h2></div>
+          <div class="col-4 text-center"><h2>Conteúdo</h2></div>
+          <div class="col-1 text-center"><h2>Ads</h2></div>
+        </div>
+      </div>
+      <div *ngFor="let item of container.calendars" class="calendar-container items-container">
+        <div class="calendar-container items row">
+          <div class="col-1"><p>{{item.date}}</p></div>
+          <div class="col-2 text-center"><p>{{item.pilar}}</p></div>
+          <div class="col-2 text-center"><p>{{item.format}}</p></div>
+          <div class="col-2 text-center">
+            <p><span><fa-icon *ngFor="let icon of item.platform"
+                              [icon]="[getIconFamily(icon), getIcon(icon)]"></fa-icon></span></p>
+          </div>
+          <div class="col-4 text-center"><p>{{item.content}}</p></div>
+          <div class="col-1 text-center">
+            <p class="check" [ngClass]="item.ads ? 'active' : ''">
+              <fa-icon *ngIf="item.ads" icon="check"></fa-icon>
+            </p>
+          </div>
+        </div>
+      </div>
 
+    </div>
   </div>
 
+
+</div>

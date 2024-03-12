@@ -23,38 +23,74 @@
     </div>
     <div class="form-group col-6">
       <label for="pilar">Pilar</label>
-      <input formControlName="pilar" type="text" class="form-control" id="pilar">
+      <!--      <input formControlName="platform" type="text" class="form-control" id="platform">-->
+      <ng-select
+        [items]="pilars"
+        bindLabel="pilar"
+        id="pilar"
+        formControlName="pilar">
+
+        <ng-template ng-label-tmp let-item="item" let-clear="clear">
+        <span class="ng-value-label">
+          {{item}}</span>
+          <!--        <span class="ng-value-icon right" (click)="clear(item)" aria-hidden="true">×</span>-->
+        </ng-template>
+
+        <ng-template ng-option-tmp let-item="item">
+
+          <span>{{item}}</span>
+        </ng-template>
+      </ng-select>
     </div>
     <div class="form-group col-6">
       <label for="content">Conteúdo</label>
       <input formControlName="content" type="text" class="form-control" id="content">
     </div>
     <div class="form-group col-6">
-      <label for="content">Plataforma</label>
+      <label for="platform">Plataforma</label>
       <!--      <input formControlName="platform" type="text" class="form-control" id="platform">-->
+      <ng-select
+        [items]="platforms"
+        [multiple]="true"
+        bindLabel="platform"
+        id="platform"
+        formControlName="platform">
+
+        <ng-template ng-label-tmp let-item="item" let-clear="clear">
+        <span class="ng-value-label">      <fa-icon [icon]="[getIconFamily(item), getIcon(item)]"></fa-icon>
+          {{item}}</span>
+          <!--        <span class="ng-value-icon right" (click)="clear(item)" aria-hidden="true">×</span>-->
+        </ng-template>
+
+        <ng-template ng-option-tmp let-item="item">
+
+          <span><fa-icon [icon]="[getIconFamily(item), getIcon(item)]"></fa-icon> &nbsp;{{item}}</span>
+        </ng-template>
+      </ng-select>
     </div>
 
-    <ng-select
-      [items]="platforms"
-      [multiple]="true"
-      bindLabel="platform"
-      formControlName="platform">
 
-      <ng-template ng-label-tmp let-item="item" let-clear="clear">
-        <span class="ng-value-label">      <fa-icon [icon]="['fab', getIcon(item)]"></fa-icon>
-          {{item}}</span>
-        <!--        <span class="ng-value-icon right" (click)="clear(item)" aria-hidden="true">×</span>-->
-      </ng-template>
-
-      <ng-template ng-option-tmp let-item="item">
-
-        <span><fa-icon [icon]="['fab', getIcon(item)]"></fa-icon> &nbsp;{{item}}</span>
-      </ng-template>
-    </ng-select>
 
     <div class="form-group col-6">
       <label for="format">Formato</label>
-      <input formControlName="format" type="text" class="form-control" id="format">
+      <!--      <input formControlName="platform" type="text" class="form-control" id="platform">-->
+      <ng-select
+        [items]="formats"
+        bindLabel="format"
+        id="format"
+        formControlName="format">
+
+        <ng-template ng-label-tmp let-item="item" let-clear="clear">
+        <span class="ng-value-label">
+          {{item}}</span>
+          <!--        <span class="ng-value-icon right" (click)="clear(item)" aria-hidden="true">×</span>-->
+        </ng-template>
+
+        <ng-template ng-option-tmp let-item="item">
+
+          <span>{{item}}</span>
+        </ng-template>
+      </ng-select>
     </div>
     <div class="form-group col-6">
       <label for="ads">Ads</label>
